@@ -68,6 +68,7 @@ async def yoink_reactions(interaction, message: discord.Message):
 async def main():
     async with client, aiohttp.ClientSession() as session:
         client.session = session
+        discord.utils.setup_logging()
         await client.login(TOKEN)
         await client.connect(reconnect=True)
 
