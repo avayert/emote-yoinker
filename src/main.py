@@ -18,7 +18,7 @@ tree = discord.app_commands.CommandTree(client)
 cache = {}
 
 
-@tree.context_menu()
+@tree.context_menu(name='yoink emotes')
 async def yoink_emotes(interaction, message: discord.Message):
     emojis = CUSTOM_EMOJIS.findall(message.content)
 
