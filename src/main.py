@@ -53,14 +53,14 @@ async def yoink_emotes(interaction, message: discord.Message):
 
 @tree.context_menu(name='yoink reactions')
 async def yoink_reactions(interaction, message: discord.Message):
-    if not message.reactions:
-        return await interaction.response.send_message("There are no custom reactions on this message.")
-
     urls = [
-        reaction.url
+        reaction.emoji.url
         for reaction in message.reactions
         if isinstance(reaction.emoji, (discord.Emoji, discord.PartialEmoji))
     ]
+
+    if not urls:
+        return await interaction.response.send_message("There are no custom reactions on this message.")
 
     return await send_emojis(interaction, urls)
 
